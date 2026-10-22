@@ -8,3 +8,12 @@ add_executable(parent
 
 add_executable(child
         child.c)
+find_package(Threads REQUIRED)
+
+add_executable(main main.c)
+target_compile_options(main PRIVATE -Wall)
+target_link_libraries(main Threads::Threads)
+
+add_executable(test test.c)
+target_compile_options(test PRIVATE -Wall)
+target_link_libraries(test Threads::Threads)
